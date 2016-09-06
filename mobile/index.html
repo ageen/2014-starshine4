@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Princess's Birthday!</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("img.lazy").lazyload({ 
+    	effect : "fadeIn",
+		threshold :200,
+		failure_limit : 10
+	});
+});
+</script>
+</head>
+<body style="background:#84cefc;">
+<div class="wrapper">
+<div class="flower_crown"><img class="lazy" src="images/star.gif" data-original="images/flower_crown.png" /></div>
+<div id="text_fade" class="text_fade">
+<h6>Best wishes to my dear princess!</h6>
+<h6>Happy birthday!</h6>
+</div>
+<div id="text_fade_2" class="text_fade">
+<h6 style="color:#9900FF">致欣兒</h6>
+<h6 style="color:#FF00CC">親愛的欣兒</h6>
+<h6 style="color:#FF00FF">遇見你</h6>
+<h6 style="color:#FF0066">是我一生中無比珍貴的記憶</h6>
+<h6 style="color:#CC00FF">我生命中最重要的人</h6>
+<h6 style="color:#FF00FF">我的至愛</h6>
+<h6 style="color:#FF00FF">感謝上蒼讓我與你相遇</h6>
+<h6 style="color:#CC00FF">因為你，夢想變得如此清晰</h6>
+<h6 style="color:#FF00FF">因為你，生活充滿無限希冀</h6>
+<h6 style="color:#E900AF">欣兒，要一輩子都健康、幸福</h6>
+<h6 style="color:#FF00FF">這是我的祝福</h6>
+<h6 style="color:#F900BC">也是我此生的夢想</h6>
+<h6 style="color:#0072FF">項峰</h6>
+</div>
+<img id="element1" class="lazy" src="images/star.gif" data-original="images/element1.png" style="display:none; z-index:100" />
+<img id="element2" class="lazy" src="images/white.gif" data-original="images/starshine.png" />
+<img id="element3" class="lazy" src="images/star.gif" data-original="images/signature.png" />
+<img id="element4" class="lazy princess" src="images/star.gif" data-original="images/princess.png" style="display:none;" />
+<img id="element5" src="images/angels.png" style="display:none;" />
+</div>
+</body>
+</html>
+<script type="text/javascript" src="js/textition.js"></script>
+<script type="text/javascript" src="js/jsAnim.js"></script>
+<script type="text/javascript">
+var manager = new jsAnimManager();
+$(function() {
+	//	Element_4
+	var element_iiii = document.getElementById('element4');
+	element_iiii.style.position = "relative";
+	manager.registerPosition("element4");
+	element_iiii.setPosition(-80,0);
+	element_iiii.style.display = "block";
+	var anim_iiii = manager.createAnimObject("element4");
+	anim_iiii.add({property: Prop.position, to: new Pos(-80,160), duration:2000, onComplete: function() {$("#element5").fadeIn("slow");}});
+	
+	//	Element_1
+	var element_i = document.getElementById('element1');
+	element_i.style.position = "relative";
+	manager.registerPosition("element1");
+	element_i.setPosition(-100,-100);
+	element_i.style.display = "block";
+	var anim_i = manager.createAnimObject("element1");
+	anim_i.add({property: Prop.wait, duration:2100});
+	anim_i.add({property: Prop.positionSemicircle(false), to: new Pos(100,125), duration: 5000});
+	anim_i.add({property: Prop.position, to:new Pos(105,120), duration: 5000, loop:-1, ease: jsAnimEase.bounceSmooth});
+	
+	// header
+	$('#text_fade').textition({
+		autoplay: true,
+		handler: false,
+		interval: 3,
+		speed: 1,
+		map: {x: 50, y: 20, z: 500}
+	});
+	// header
+	$('#text_fade_2').textition({speed: 0.5,map: {x: 0, y: 0, z: 100},perspective:30,element: $('#element4')})
+});
+</script>
